@@ -14,11 +14,17 @@ export class InputTextDemo extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
     console.log(event.target.value);
+  }
+
+  handleSubmit(event) {
+    alert('"' + this.state.title + '" užregistruotas administratorius.');
+    event.preventDefault();
   }
 
   render() {
@@ -33,23 +39,24 @@ export class InputTextDemo extends Component {
           <h3>Vardas</h3>
           <span className="ui-float-label">
             <InputText
-            name="vardas"
-            id="float-input"
-             type="text"
+              name="vardas"
+              id="float-input"
+              type="text"
               size="30"
-              onChange={this.handleChange} />
+              onChange={this.handleChange}
+            />
             <label htmlFor="float-input">Vardas</label>
           </span>
 
           <h3>Pavardė</h3>
           <span className="ui-float-label">
             <InputText
-             name="pavarde"
-             id="float-input"
-             type="text"
-             size="30"
-             onChange={this.handleChange}
-              />
+              name="pavarde"
+              id="float-input"
+              type="text"
+              size="30"
+              onChange={this.handleChange}
+            />
             <label htmlFor="float-input">Pavardė</label>
           </span>
 
@@ -78,7 +85,7 @@ export class InputTextDemo extends Component {
           </span>
         </div>
 
-        <Button label="Save" className="ui-button-danger" />
+        <Button label="Save" className="ui-button-danger" onClick={this.handleSubmit} />
       </div>
     );
   }
